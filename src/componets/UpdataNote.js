@@ -1,15 +1,16 @@
-import React, { useRef } from 'react'
-import { SignalCellularAlt, SignalWifi4Bar, Battery30, MoreVert, Search } from '@mui/icons-material';
-import { Navbar, Container, Form } from 'react-bootstrap';
-function Notes() {
-    
+import React,{useRef} from 'react'
+import '../componets/update.css';
+import { SignalCellularAlt, SignalWifi4Bar, Battery30, ArrowBack } from '@mui/icons-material';
+import { Navbar, Container } from 'react-bootstrap';
+function UpdataNote() {
+
     const data = useRef();
-    const handleChange = () => {
-        console.log(data.current.value)
-        localStorage.setItem('inputValue',data.current.value)
+    const handleSubmit = () => {
+        localStorage.setItem('value',data.current.value);
+        console.log(localStorage.getItem('value'))
     }
-    console.log(localStorage.getItem('inputValue'))
-    
+    // console.log(localStorage.getItem('value'))
+
     return (
         <>
             <div className='main'>
@@ -28,36 +29,27 @@ function Notes() {
                     </div>
                     <Navbar style={{ padding: '12px 12px 0px 12px' }}>
                         <Container>
-                            <p>Notes</p>
-                            <MoreVert />
+                            <ArrowBack />
+                            <p>Updata Notes</p>
                         </Container>
                     </Navbar>
                     <div className='main-content'>
                         <div className='inputField'>
-                            <input placeholder='Search' ref={data} /><Search onClick={handleChange} />
+                            <input placeholder='Add Note' ref={data} />
                         </div>
                         <div className='row'>
-                            <div className='col-md-4'>
+                            <div className='col-md-12'>
                                 <div className='head'>
                                     <p>Box1</p>
-                                    <MoreVert />
-                                </div>
-                                <div className='box-content'>
-                                    <Form.Check label="name" />
                                 </div>
                             </div>
-                            <div className='col-md-4 box2'>
+                            <div className='col-md-12'>
                                 <div className='head'>
                                     <p>Box2</p>
-                                    <MoreVert />
                                 </div>
-                                <div className='box-content'>
-                                    <Form.Check label="1" />
-                                    <Form.Check label="1" />
-                                    <Form.Check label="1" />
-                                    <Form.Check label="1" />
-                                    <Form.Check label="1" />
-                                </div>
+                            </div>
+                            <div className='btn-box'>
+                                <button className='btn btn-note text-center' onClick={handleSubmit}>Add Note</button>
                             </div>
                         </div>
                     </div>
@@ -67,4 +59,4 @@ function Notes() {
     )
 }
 
-export default Notes
+export default UpdataNote
